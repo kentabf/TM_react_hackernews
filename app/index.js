@@ -26,15 +26,17 @@ class App extends React.Component {
 			<React.Fragment>
 				<Router>
 					<ThemeProvider value={this.state} >
-						<Nav />
-						<React.Suspense fallback={<Loading />} >
-							<Switch>
-								<Route exact path='/' component={Top} />
-								<Route path='/new' component={New} />
-								<Route path='/user' component={User} />
-								<Route path='/post' component={Post} />
-							</Switch>
-						</React.Suspense>
+						<div className={this.state.theme} >
+							<Nav />
+							<React.Suspense fallback={<Loading />} >
+								<Switch>
+									<Route exact path='/' component={Top} />
+									<Route path='/new' component={New} />
+									<Route path='/user' component={User} />
+									<Route path='/post' component={Post} />
+								</Switch>
+							</React.Suspense>
+						</div>
 					</ThemeProvider>
 				</Router>
 			</React.Fragment>

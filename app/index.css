@@ -16,6 +16,12 @@ li {
   list-style-type: none;
 }
 
+.dark {
+  color: #DADADA;
+  background: #1c2022;
+  min-height: 100%;
+}
+
 .nav-link {
   font-size: 18px;
   font-weight: bold;
