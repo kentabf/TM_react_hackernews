@@ -1,5 +1,6 @@
 import React from 'react'
 import { fetchItem, fetchComments, fetchMainPosts, fetchUser, fetchPosts} from '../utils/api'
+import Loading from './Loading'
 
 export default class Posts extends React.Component {
 	state = {
@@ -12,9 +13,9 @@ export default class Posts extends React.Component {
 	}
 
 	loadPosts = () => {
-		const postsType = this.props.postsType
+		const { postsType, fetcher } = this.props
 		if (this.state.posts === null) {
-			fetchMainPosts(postsType)
+			fetcher()
 				.then((posts) => {
 					this.setState({ posts: posts })
 				})
@@ -56,9 +57,15 @@ export default class Posts extends React.Component {
 		const { posts, error } = this.state
 
 		return (
+			/*
+			TODO:
+			- add a Loading component
+			- format error
+			- remove success text
+			*/
 			<React.Fragment>
 
-				{this.isLoading() && <p>Loading</p> }
+				{this.isLoading() && <Loading /> }
 				
 				{error && <p>Error: {error}</p>}
 

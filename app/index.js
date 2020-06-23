@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import { ThemeProvider } from './contexts/theme'
 import Nav from './components/Nav'
-import Posts from './components/Posts'
+import Top from './components/Top'
+import User from './components/User'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 class App extends React.Component {
@@ -22,7 +23,7 @@ class App extends React.Component {
 				<Router>
 					<ThemeProvider value={this.state} >
 						<Nav />
-						<Posts postsType='top' />
+						<User id='datashrimp'/>
 						<h1>Hackernews</h1>
 					</ThemeProvider>
 				</Router>
