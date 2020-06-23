@@ -5,7 +5,7 @@ import { fetchMainPosts } from '../utils/api'
 export default class Top extends React.Component {
 
 	fetcher = () => {
-		return fetchMainPosts('New')
+		return fetchMainPosts('new')
 	}
 
 	render() {

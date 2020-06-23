@@ -44,3 +44,27 @@ li {
   display: flex;
   flex-direction: row;
 }
+
+.post {
+  margin: 20px 10px;
+}
+
+.comment {
+  margin: 20px 10px;
+}
+
+.comment-bg-light {
+  background-color: rgb(128, 128, 128);
+}
+
+.red {
+  color: rgb(187, 46, 31);
+}
+
+.text-details-light {
+  color: rgb(128, 128, 128);
+}
+
+.text-details-light a {
+  color: rgb(0, 0, 0);
+}

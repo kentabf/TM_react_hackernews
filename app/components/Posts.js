@@ -1,6 +1,8 @@
 import React from 'react'
 import { fetchItem, fetchComments, fetchMainPosts, fetchUser, fetchPosts} from '../utils/api'
 import Loading from './Loading'
+import { Link } from 'react-router-dom'
+import date from '../utils/date'
 
 export default class Posts extends React.Component {
 	state = {
@@ -39,14 +41,33 @@ export default class Posts extends React.Component {
 		TODO: 
 		- format everything here
 		- make correct link attachments
+		- color correction
 		*/
 		return (
 			<li key={id} className=''>
-				<div>
-					<div dangerouslySetInnerHTML={ { __html: title }}></div>
-					<div>
-						by <a href={by}>{by}</a> on {time} with <a href={id}>{descendants}</a>
-					</div>
+				<div className='post'>
+					<span>
+						<a href={url}><div dangerouslySetInnerHTML={ { __html: title }}></div></a>
+					</span>
+					<span className='text-details-light'>
+						by&nbsp;
+						<Link to={{
+								pathname: `/user`,
+								search: `?id=${by}`,
+							}}
+						>
+						{by}
+						</Link>
+						&nbsp;on {date(time)} with&nbsp;
+						<Link to={{
+								pathname: `/post`,
+								search: `?id=${id}`
+							}}
+						>
+						{descendants}
+						</Link>
+						&nbsp;comments
+					</span>
 				</div>
 			</li>
 		)
@@ -59,7 +80,6 @@ export default class Posts extends React.Component {
 		return (
 			/*
 			TODO:
-			- add a Loading component
 			- format error
 			- remove success text
 			*/

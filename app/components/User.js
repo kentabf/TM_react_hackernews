@@ -2,12 +2,12 @@ import React from 'react'
 import UserPosts from './UserPosts'
 import Loading from './Loading'
 import queryString from 'query-string'
+import date from '../utils/date'
 import { fetchItem, fetchComments, fetchMainPosts, fetchUser, fetchPosts} from '../utils/api'
 
 export default class User extends React.Component {
 
 	state = {
-		// id: queryString.parse(this.props.location.search.id),
 		user: null,
 		error: null,
 	}
@@ -22,7 +22,9 @@ export default class User extends React.Component {
 	}
 
 	loadUser = () => {
-		const { id } = this.props
+
+		const { id } = queryString.parse(this.props.location.search)
+		console.log(`id is: ${id}`)
 
 		fetchUser(id)
 			.then((user) => {
@@ -42,11 +44,17 @@ export default class User extends React.Component {
 		// Assume this will be only called on once loadUser() successful
 		const { created, karma, about, id, submitted } = this.state.user
 
+		/*
+		TODO: 
+		- work on formatting
+		- cutoff
+		*/
+
 		return (
 			<React.Fragment>
 				<div className=''>
 					<h1>{id}</h1>
-					joined {Date(created)} has {karma} karma
+					joined {date(created)} has {karma} karma
 					<div dangerouslySetInnerHTML={ { __html: about }}></div>
 				</div>
 				<div>
